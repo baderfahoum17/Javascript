@@ -1,5 +1,5 @@
 # Javascript
-some little side project done on the free time
+some little Vanilla JavaScript side project done on the free time + html and css
 
 
 Todolist:
