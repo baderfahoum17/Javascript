@@ -9,7 +9,10 @@ const details = document.querySelector('.details');
 const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
 
+//class it up
+const forecast = new Forecast();
 
+console.log(forecast);
 const updateUI = (data) => {
 
     // const cityDetails = data.cityDetails;
@@ -35,17 +38,8 @@ const updateUI = (data) => {
   
     // isDayTime is a property fetched from the api
     let timeSrc = weather.IsDayTime ? "img/day.svg" : "img/night.svg";
-    // if(weather.IsDayTime){
-    //     timeSrc="img/day.svg";
-    // }else{
-    //     timeSrc="img/night.svg";
-    // }
+    
     time.setAttribute('src', timeSrc);
-
-    //or :
-    // time.outerHTML = `
-    //     <img src="${timeSrc}" class="time card-img-top">    
-    // `;
 
     // upcate the icon based on the time of day
     let iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
@@ -54,27 +48,11 @@ const updateUI = (data) => {
     //     <img src="img/icons/${iconSrc}.svg">
     // `;
 
-
     // make the card visible upon sucessful resolvement
     if(card.classList.contains('d-none')){
         card.classList.remove('d-none');
     }
-
-
-
 };
-
-//
-const updateCity = async (cityName) => {
-
-    const cityDetails = await getCity(cityName);
-    const cityWeather = await getWeather(cityDetails.Key);
-    return {
-        cityDetails: cityDetails,
-        weather: cityWeather
-    };
-
-}
 
 cityForm.addEventListener('submit', e => {
     //dont refresh the page
@@ -84,7 +62,8 @@ cityForm.addEventListener('submit', e => {
     let cityName = cityForm.city.value.trim();
     // console.log(cityName.toLowerCase());
     if (cityName.length) {
-        updateCity(cityName)
+        //update the UI with new city
+        forecast.updateCity(cityName)
             .then(data => updateUI(data))
             .catch(err => console.log(err));
         cityForm.reset();
@@ -92,5 +71,12 @@ cityForm.addEventListener('submit', e => {
         alert('please enter something')
     }
 
-    //update the UI with new city
+    // set local storage
+    localStorage.setItem('city',cityName);
 });
+
+if(localStorage.getItem('city')){
+    forecast.updateCity(localStorage.getItem('city'))
+        .then(data => updateUI(data))
+        .catch(err => console.log(err));
+}
