@@ -1,0 +1,20 @@
+{
+  "name": "chat_project",
+  "version": "1.0.0",
+  "description": "live chat proj",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "/baderfahoum17"
+  },
+  "author": "Baderfahoum",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.0",
+    "@babel/preset-env": "^7.7.1"
+  }
+}
