@@ -17,7 +17,9 @@ alt="dust mite" width="50%" title="By BaderFahoum 1">
 
 
 # LiveChat :
-a live chat application with firebase(NonSQL DB) integration
+
+a live chat application with firebase(NonSQL DB) integration:
+
 [] todo: add authentication 
 
 <img src="https://github.com/baderfahoum17/Javascript/blob/adding-the-chat-proj/chat_project/Screen%20Shot%202019-11-06%20at%2013.20.07.png" 
